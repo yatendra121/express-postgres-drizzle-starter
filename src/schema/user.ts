@@ -1,7 +1,7 @@
 import type { InferSelectModel } from 'drizzle-orm';
 import { boolean, pgTable, text, timestamp, uuid, varchar } from 'drizzle-orm/pg-core';
 import { createSelectSchema } from 'drizzle-zod';
-import { z } from 'zod';
+import { z } from 'zod/v4';
 
 export const users = pgTable('users', {
   id: uuid('id').notNull().primaryKey().defaultRandom(),
@@ -18,7 +18,7 @@ export const users = pgTable('users', {
 
 export const selectUserSchema = createSelectSchema(users, {
   email: schema =>
-    schema.email.email().regex(/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6})*$/i),
+    schema.regex(/^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6})*$/i),
 });
 
 export const verifyUserSchema = z.object({
