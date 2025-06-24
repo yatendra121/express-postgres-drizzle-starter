@@ -7,7 +7,7 @@
     "dev-tsx": "tsx watch src/server.ts",
     "dev": "npx node --import=tsx --watch src/server.ts",
     "generate": "drizzle-kit generate",
-    "migrate": "tsx src/migrate.ts",
+    "migrate": "drizzle-kit generate",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
